@@ -55,7 +55,14 @@ def hello():
 def redirectToIndex():
     return app.send_static_file("index.html")
 
-
+@app.route("/api/bot", methods = ['POST'])
+def hook():
+        webhookMessage = request.json
+        print (webhookMessage)
+        messageId = webhookMessage["data"]["id"]
+        print (messageId)
+        return jsonify(webhookMessage)
+        
 initDatabase()
 pushDataToDatabase("Charles Webex", 15)
 if __name__ == "__main__":
