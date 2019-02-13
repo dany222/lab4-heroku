@@ -9,6 +9,8 @@ static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)),'stat
 @app.route("/<path:path>",methods=["GET"])
 def serveStaticDir(path):
     return send_from_directory(static_file_dir,path)
+
+@app.route("/")
 def redirectToIndex():
     return app.send_static_file("index.html")
 
