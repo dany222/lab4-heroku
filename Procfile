@@ -1,1 +1,1 @@
-web: gunicorn lab6-webhook:app
+web: gunicorn webhook-fixed:app
