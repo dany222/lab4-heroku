@@ -3,10 +3,10 @@ import sqlite3
 from flask import Flask,jsonify,request, send_from_directory
 
 #static website methodok
-static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)),'static')
 
 
 
+app = Flask(__name__)
 #database methodok
 def initDatabase():
     conn = sqlite3.connect("about.db")
@@ -29,9 +29,9 @@ def pushDataToDatabase(name,age):
         conn.commit()
 
 
-app = Flask(__name__)
 name = "Charles Webex"
 age= "140"
+static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)),'static')
 @app.route("/<path:path>",methods=["GET"])
 def serveStaticDir(path):
     return send_from_directory(static_file_dir,path)
