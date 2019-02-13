@@ -4,9 +4,6 @@ from flask import Flask,jsonify,request, send_from_directory
 
 #static website methodok
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)),'static')
-@app.route("/<path:path>",methods=["GET"])
-def serveStaticDir(path):
-    return send_from_directory(static_file_dir,path)
 
 
 
@@ -35,6 +32,9 @@ def pushDataToDatabase(name,age):
 app = Flask(__name__)
 name = "Charles Webex"
 age= "140"
+@app.route("/<path:path>",methods=["GET"])
+def serveStaticDir(path):
+    return send_from_directory(static_file_dir,path)
 @app.route("/api/about", methods = ["POST","GET"])
 def about():
     global name,age
