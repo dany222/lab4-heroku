@@ -1,1 +1,1 @@
-web: gunicorn webhook-fixed:app
+web: gunicorn webhook-debug:app
